@@ -94,6 +94,7 @@ settings:
     --cli-corner-radius: 0px;                    /* 0px for square terminal corners; increase to restore rounding */
     --cli-scrollbar-size: 10px;                  /* Width and height of terminal-style scrollbars */
     --cli-pane-border-width: 1px;                /* Divider thickness between workspace panes */
+    --cli-tab-gap: 5px;                          /* Space between adjacent workspace tabs */
     /* === CRT EFFECT SETTINGS === */
     --crt-overlay-display: block;                /* Change to none to disable scanlines and vignette */
     --crt-scanline-spacing: 4px;                 /* Distance from one scanline to the next */
@@ -168,15 +169,22 @@ body.theme-light {
     --background-modifier-border: var(--phosphor-border);
     --background-modifier-border-hover: var(--phosphor-border-hover);
     --background-modifier-border-focus: var(--phosphor-text);
+    --divider-color: var(--phosphor-border);
+    --divider-color-hover: var(--phosphor-text);
+    --divider-width: var(--cli-pane-border-width);
     --background-modifier-hover: var(--blockquote-background);
     --text-normal: var(--phosphor-text);
     --text-muted: var(--phosphor-border-hover);
     --text-accent: var(--phosphor-text);
     --text-accent-hover: var(--phosphor-text);
+    --text-on-accent: var(--phosphor-background);
+    --text-on-accent-inverted: var(--phosphor-background);
     --text-highlight-bg: var(--phosphor-highlight);
     --text-selection: var(--phosphor-selection);
     --interactive-accent: var(--phosphor-text);
     --interactive-accent-hover: var(--phosphor-border-hover);
+    --interactive-normal: var(--code-editor-background);
+    --interactive-hover: var(--phosphor-highlight);
     --icon-color: var(--phosphor-text);
     --icon-color-hover: var(--phosphor-text);
     --icon-color-active: var(--phosphor-text);
@@ -344,6 +352,56 @@ select option:checked,
     border-color: var(--phosphor-border);
 }
 
+/* Community Themes primary action and installed-status badge. Obsidian gives
+ * these elements their own foreground colors, so reinforce the inverse
+ * phosphor pairing at the component level. */
+.community-modal-button-container button.mod-cta,
+.community-modal-button-container button.mod-cta:hover,
+.community-modal-button-container button.mod-cta:focus,
+.community-modal-button-container button.mod-cta:focus-visible,
+.community-modal-button-container button.mod-cta:active {
+    background-color: var(--phosphor-text);
+    color: var(--phosphor-background);
+    border-color: var(--phosphor-text);
+    text-shadow: none;
+}
+
+.community-modal-button-container button.mod-cta * {
+    color: inherit;
+}
+
+/* Secondary Community Themes actions use a slightly raised, palette-aware
+ * dark surface instead of Obsidian's generic gray. */
+.community-modal-button-container button:not(.mod-cta),
+.community-modal-button-container button:not(.mod-cta):hover,
+.community-modal-button-container button:not(.mod-cta):focus,
+.community-modal-button-container button:not(.mod-cta):focus-visible,
+.community-modal-button-container button:not(.mod-cta):active {
+    background-color: var(--code-editor-background);
+    color: var(--phosphor-text);
+    border: 1px solid var(--phosphor-text);
+    text-shadow: var(--crt-text-shadow);
+}
+
+.community-modal-button-container button:not(.mod-cta) * {
+    color: inherit;
+}
+
+.community-item .flair,
+.community-modal-details .flair,
+.community-modal-info .flair {
+    background-color: var(--phosphor-text);
+    color: var(--phosphor-background);
+    border-color: var(--phosphor-text);
+    text-shadow: none;
+}
+
+.community-item .flair *,
+.community-modal-details .flair *,
+.community-modal-info .flair * {
+    color: inherit;
+}
+
 /* =====================================================
  *  HEADINGS
  *  ===================================================== */
@@ -396,6 +454,26 @@ b,
 .workspace-tab-header.is-active {
     background-color: var(--cli-active-background);
     color: var(--cli-active-text);
+    border-color: var(--phosphor-text);
+}
+
+/* Give every tab a terminal-style phosphor outline. The active tab uses the
+ * full foreground color while inactive tabs retain the quieter pane color. */
+.workspace-tab-header {
+    border: 1px solid var(--phosphor-border);
+    border-radius: var(--cli-corner-radius);
+}
+
+/* Remove Obsidian's curved joins at the lower corners of active tabs. They
+ * overlap neighboring decorations once tabs are outlined and separated. */
+.workspace-tab-header::before,
+.workspace-tab-header::after {
+    content: none;
+    display: none;
+}
+
+.workspace-tab-header-container-inner {
+    gap: var(--cli-tab-gap);
 }
 
 .nav-file-title.is-active,
@@ -453,13 +531,6 @@ body:not(.is-focused) .workspace-tab-header.is-active .workspace-tab-header-inne
 body:not(.is-focused) .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
     color: var(--cli-active-text);
     opacity: 1;
-}
-
-.workspace-leaf,
-.workspace-split,
-.workspace-tab-container {
-    border-color: var(--phosphor-border);
-    border-width: var(--cli-pane-border-width);
 }
 
 ::-webkit-scrollbar {
