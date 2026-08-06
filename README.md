@@ -1,6 +1,6 @@
 # Amber Glass Phosphor
 
-Amber Glass Phosphor is a dark CRT-inspired theme for Obsidian. It uses embedded WOFF2 fonts, square terminal-style interface elements, restrained scanlines, and a configurable phosphor glow. Everything required by the theme is contained in `theme.css`, so it remains fully usable offline.
+Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended to bring my vision of a retro-futuristic interface to Obsidian while remaining easy on the eyes and helping with concentration. Multicolored headings make navigation quicker. This is a 1.0 release and might include updates in the future.
 
 ## Features
 
@@ -47,18 +47,8 @@ The theme embeds format-converted WOFF2 versions of:
 
 The embedded copies use theme-specific internal aliases. Their original copyright notices, project links, and SIL Open Font License information are available in [`licenses/fonts`](licenses/fonts/README.md).
 
-## Publishing checklist
-
-Before submitting the theme to the Obsidian Community directory:
-
-1. Add a 16:9 screenshot; Obsidian recommends 512 × 288 pixels.
-2. Commit `README.md`, `LICENSE`, `manifest.json`, `theme.css`, and the `licenses` directory to the repository root.
-3. Create a GitHub release tagged `1.0.0`.
-4. Attach `manifest.json` and `theme.css` to that release.
-5. Submit the repository through [Obsidian Community](https://community.obsidian.md/).
-
 ## License
 
-The theme's original CSS and documentation are released under the [MIT License](LICENSE).
+Amber Glass Phosphor is released under the [MIT License](LICENSE).
 
-The embedded fonts are separately licensed under the SIL Open Font License 1.1. The MIT License does not replace or alter the font licenses.
+The embedded fonts are separately licensed under the SIL Open Font License 1.1. See [`licenses/fonts`](licenses/fonts/README.md) for attribution and license details.
