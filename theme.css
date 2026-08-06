@@ -73,7 +73,9 @@ settings:
     --phosphor-rgb: 255, 170, 0;                  /* RGB channels for translucent phosphor fills */
     --phosphor-border: #806000;                   /* Dull amber outlines around windows, panels, and controls */
     --phosphor-border-hover: #B07800;             /* Brighter amber outline when a control is hovered */
-    --link-color: #89FF5A;                        /* Links in the editor, preview, and PDF export */
+    --phosphor-link: #FFC24A;                     /* Brighter phosphor variation for links */
+    --phosphor-link-hover: #FFD980;               /* Link under the pointer */
+    --phosphor-link-visited: #C48700;             /* Readable but subdued visited link */
     --spell-error-color: #49BE25;                 /* Wavy underline beneath misspelled words */
     --underline-color: #E17A00;                   /* Underlines added by editor plugins */
     --code-editor-background: #251000;            /* Code-block background in Live Preview */
@@ -85,16 +87,6 @@ settings:
     --heading-5-color: #FF3333;                   /* H5 headings: red */
     --heading-6-color: #FFDD00;                   /* H6 headings: yellow */
 
-    --sidebar-hover-color: rgba(var(--phosphor-rgb), 0.05);  /* File or folder under the pointer */
-    --sidebar-button-hover-color: rgba(var(--phosphor-rgb), 0.08); /* Sidebar action-button hover */
-    --sidebar-active-color: rgba(var(--phosphor-rgb), 0.10); /* Currently open file */
-    --blockquote-background: rgba(255, 170, 0, 0.08); /* Amber blockquote fill */
-    --blockquote-border: rgba(255, 170, 0, 0.25);     /* Amber blockquote left border */
-    --table-border-color: rgba(255, 170, 0, 0.25);    /* Normal table-cell borders */
-    --table-header-border-color: rgba(255, 170, 0, 0.35); /* Table-header borders */
-    --table-row-odd-color: rgba(255, 170, 0, 0.06);   /* Odd zebra-striped table rows */
-    --table-row-even-color: rgba(255, 170, 0, 0.12);  /* Even zebra-striped table rows and editor row hover */
-    --table-row-hover-color: rgba(255, 170, 0, 0.18); /* Table row under the pointer */
     --code-inset-shadow-color: rgba(0, 0, 0, 0.30);   /* Inner shadow around Live Preview code blocks */
     --transparent-overlay: rgba(0, 0, 0, 0);          /* Transparent table-hover overlay */
 
@@ -102,9 +94,6 @@ settings:
     --cli-corner-radius: 0px;                    /* 0px for square terminal corners; increase to restore rounding */
     --cli-scrollbar-size: 10px;                  /* Width and height of terminal-style scrollbars */
     --cli-pane-border-width: 1px;                /* Divider thickness between workspace panes */
-    --cli-active-background: var(--phosphor-text); /* Background of active tabs and selected items */
-    --cli-active-text: var(--phosphor-background); /* Text on active tabs and selected items */
-
     /* === CRT EFFECT SETTINGS === */
     --crt-overlay-display: block;                /* Change to none to disable scanlines and vignette */
     --crt-scanline-spacing: 4px;                 /* Distance from one scanline to the next */
@@ -112,9 +101,8 @@ settings:
     --crt-scanline-color: rgba(0, 0, 0, 0.10);  /* Scanline darkness; lower the final number for a subtler effect */
     --crt-vignette-color: rgba(0, 0, 0, 0.35);  /* Darkness around the outer edges of the application */
     --crt-vignette-start: 65%;                   /* Where edge darkening begins */
-    --crt-near-glow: rgba(255, 170, 0, 0.35);   /* Tight phosphor glow around text */
-    --crt-far-glow: rgba(255, 170, 0, 0.12);    /* Wider, softer phosphor glow */
-    --crt-text-shadow: 0 0 2px var(--crt-near-glow), 0 0 6px var(--crt-far-glow); /* Change to none to disable text glow */
+    --crt-near-glow-alpha: 0.35;
+    --crt-far-glow-alpha: 0.12;
 }
 
 body.phosphor-green {
@@ -123,19 +111,12 @@ body.phosphor-green {
     --phosphor-rgb: 0, 255, 102;
     --phosphor-border: #006633;
     --phosphor-border-hover: #00A854;
-    --link-color: #FFB000;
+    --phosphor-link: #59FF91;
+    --phosphor-link-hover: #91FFB5;
+    --phosphor-link-visited: #00B84A;
     --spell-error-color: #FF4D4D;
     --underline-color: #00D98B;
     --code-editor-background: #002510;
-    --blockquote-background: rgba(0, 255, 102, 0.08);
-    --blockquote-border: rgba(0, 255, 102, 0.25);
-    --table-border-color: rgba(0, 255, 102, 0.25);
-    --table-header-border-color: rgba(0, 255, 102, 0.35);
-    --table-row-odd-color: rgba(0, 255, 102, 0.06);
-    --table-row-even-color: rgba(0, 255, 102, 0.12);
-    --table-row-hover-color: rgba(0, 255, 102, 0.18);
-    --crt-near-glow: rgba(0, 255, 102, 0.35);
-    --crt-far-glow: rgba(0, 255, 102, 0.12);
 }
 
 body.phosphor-white {
@@ -144,33 +125,40 @@ body.phosphor-white {
     --phosphor-rgb: 242, 242, 242;
     --phosphor-border: #666666;
     --phosphor-border-hover: #999999;
-    --link-color: #89FF5A;
+    --phosphor-link: #FFFFFF;
+    --phosphor-link-hover: #FFFFFF;
+    --phosphor-link-visited: #B8B8B8;
     --spell-error-color: #FF5555;
     --underline-color: #D0D0D0;
     --code-editor-background: #202020;
-    --blockquote-background: rgba(255, 255, 255, 0.08);
-    --blockquote-border: rgba(255, 255, 255, 0.25);
-    --table-border-color: rgba(255, 255, 255, 0.25);
-    --table-header-border-color: rgba(255, 255, 255, 0.35);
-    --table-row-odd-color: rgba(255, 255, 255, 0.06);
-    --table-row-even-color: rgba(255, 255, 255, 0.12);
-    --table-row-hover-color: rgba(255, 255, 255, 0.18);
-    --crt-near-glow: rgba(255, 255, 255, 0.30);
-    --crt-far-glow: rgba(255, 255, 255, 0.10);
-}
-
-body.phosphor-no-crt {
-    --crt-overlay-display: none;
-}
-
-body.phosphor-no-glow {
-    --crt-text-shadow: none;
+    --crt-near-glow-alpha: 0.30;
+    --crt-far-glow-alpha: 0.10;
 }
 
 /* Map the palette onto Obsidian's themed body. The class-qualified selectors
  * outrank the theme's generic variable declarations through normal specificity. */
 body.theme-dark,
 body.theme-light {
+    /* Resolve composite colors on the body so Style Settings palette classes
+     * rebuild them from the active --phosphor-rgb value. */
+    --phosphor-highlight: rgba(var(--phosphor-rgb), 0.22);
+    --phosphor-selection: rgba(var(--phosphor-rgb), 0.30);
+    --sidebar-hover-color: rgba(var(--phosphor-rgb), 0.05);
+    --sidebar-button-hover-color: rgba(var(--phosphor-rgb), 0.08);
+    --sidebar-active-color: rgba(var(--phosphor-rgb), 0.10);
+    --blockquote-background: rgba(var(--phosphor-rgb), 0.08);
+    --blockquote-border: rgba(var(--phosphor-rgb), 0.25);
+    --table-border-color: rgba(var(--phosphor-rgb), 0.25);
+    --table-header-border-color: rgba(var(--phosphor-rgb), 0.35);
+    --table-row-odd-color: rgba(var(--phosphor-rgb), 0.06);
+    --table-row-even-color: rgba(var(--phosphor-rgb), 0.12);
+    --table-row-hover-color: rgba(var(--phosphor-rgb), 0.18);
+    --crt-near-glow: rgba(var(--phosphor-rgb), var(--crt-near-glow-alpha));
+    --crt-far-glow: rgba(var(--phosphor-rgb), var(--crt-far-glow-alpha));
+    --crt-text-shadow: 0 0 2px var(--crt-near-glow), 0 0 6px var(--crt-far-glow);
+    --cli-active-background: var(--phosphor-text);
+    --cli-active-text: var(--phosphor-background);
+
     --background-primary: var(--phosphor-background);
     --background-primary-alt: var(--phosphor-background);
     --background-secondary: var(--phosphor-background);
@@ -185,11 +173,19 @@ body.theme-light {
     --text-muted: var(--phosphor-border-hover);
     --text-accent: var(--phosphor-text);
     --text-accent-hover: var(--phosphor-text);
+    --text-highlight-bg: var(--phosphor-highlight);
+    --text-selection: var(--phosphor-selection);
     --interactive-accent: var(--phosphor-text);
     --interactive-accent-hover: var(--phosphor-border-hover);
     --icon-color: var(--phosphor-text);
     --icon-color-hover: var(--phosphor-text);
     --icon-color-active: var(--phosphor-text);
+    --link-color: var(--phosphor-link);
+    --link-color-hover: var(--phosphor-link-hover);
+    --link-external-color: var(--phosphor-link);
+    --link-external-color-hover: var(--phosphor-link-hover);
+    --link-unresolved-color: var(--phosphor-border-hover);
+    --link-unresolved-opacity: 0.85;
     --table-background: transparent;
     --table-header-background: var(--phosphor-text);
     --table-header-background-hover: var(--phosphor-text);
@@ -204,6 +200,28 @@ body.theme-light {
     --tab-radius-active: var(--cli-corner-radius);
     --modal-radius: var(--cli-corner-radius);
     --menu-radius: var(--cli-corner-radius);
+    --tab-background-active: var(--cli-active-background);
+    --tab-text-color: var(--phosphor-text);
+    --tab-text-color-active: var(--cli-active-text);
+    --tab-text-color-focused: var(--phosphor-text);
+    --tab-text-color-focused-active: var(--cli-active-text);
+    --tab-text-color-focused-active-current: var(--cli-active-text);
+    --checkbox-radius: 0px;
+    --checkbox-color: var(--phosphor-text);
+    --checkbox-color-hover: var(--phosphor-border-hover);
+    --checkbox-border-color: var(--phosphor-border);
+    --checkbox-border-color-hover: var(--phosphor-text);
+    --checkbox-marker-color: var(--phosphor-background);
+}
+
+/* Style Settings toggles come after the computed theme variables so their
+ * body classes win through normal source order. */
+body.phosphor-no-crt {
+    --crt-overlay-display: none;
+}
+
+body.phosphor-no-glow {
+    --crt-text-shadow: none;
 }
 
 /* =====================================================
@@ -218,6 +236,7 @@ body.theme-light {
 .popover,
 .suggestion-container {
     background-color: var(--phosphor-background);
+    color: var(--phosphor-text);
     border: 1px solid var(--phosphor-border);
 }
 
@@ -249,21 +268,80 @@ body.theme-light {
 /* Inputs and selectable controls inside settings and menus */
 .modal input,
 .modal textarea,
-.modal select,
 .modal button,
-.dropdown,
-.menu-item,
 .setting-item {
     border-color: var(--phosphor-border);
 }
 
 .modal input:hover,
 .modal textarea:hover,
-.modal select:hover,
-.modal button:hover,
-.dropdown:hover,
-.menu-item:hover {
+.modal button:hover {
     border-color: var(--phosphor-border-hover);
+}
+
+/* Native selects and Obsidian dropdown controls */
+select,
+.dropdown {
+    background-color: var(--phosphor-background);
+    color: var(--phosphor-text);
+    border: 1px solid var(--phosphor-border);
+    border-radius: var(--cli-corner-radius);
+    text-shadow: var(--crt-text-shadow);
+}
+
+select:hover,
+.dropdown:hover {
+    background-color: var(--phosphor-background);
+    color: var(--phosphor-link-hover);
+    border-color: var(--phosphor-text);
+    box-shadow: 0 0 4px var(--crt-near-glow);
+}
+
+/* Cover Chromium's white focus ring while the dropdown is open. */
+select:focus,
+select:focus-visible,
+select:active,
+.dropdown:focus,
+.dropdown:focus-visible,
+.dropdown:active,
+.dropdown.is-active,
+.dropdown[aria-expanded="true"] {
+    background-color: var(--phosphor-background);
+    color: var(--phosphor-link-hover);
+    border-color: var(--phosphor-text);
+    outline: 1px solid var(--phosphor-text);
+    outline-offset: -1px;
+    box-shadow: 0 0 4px var(--crt-near-glow);
+}
+
+select option,
+.dropdown option {
+    background-color: var(--phosphor-background);
+    color: var(--phosphor-text);
+}
+
+select option:checked,
+.dropdown option:checked {
+    background-color: var(--phosphor-text);
+    color: var(--phosphor-background);
+}
+
+/* Context-menu and suggestion-list entries */
+.menu-item,
+.suggestion-item {
+    background-color: transparent;
+    color: var(--phosphor-text);
+}
+
+.menu-item:hover,
+.menu-item.is-selected,
+.suggestion-item:hover {
+    background-color: var(--phosphor-highlight);
+    color: var(--phosphor-link-hover);
+}
+
+.menu-separator {
+    border-color: var(--phosphor-border);
 }
 
 /* =====================================================
@@ -287,21 +365,6 @@ body.theme-light {
 strong,
 b,
 .cm-strong {
-    font-family: "AGP Display", sans-serif;
-}
-
-/* Reading view + preview */
-.markdown-reading-view strong,
-.markdown-reading-view b,
-.markdown-preview-view strong,
-.markdown-preview-view b {
-    font-family: "AGP Display", var(--font-text), sans-serif;
-    font-weight: 400; /* Audiowide is usually single-weight */
-    letter-spacing: 0.02em; /* optional: helps it feel “emphatic” */
-}
-
-/* Live Preview / editor (CodeMirror) */
-.cm-s-obsidian .cm-strong {
     font-family: "AGP Display", var(--font-text), sans-serif;
     font-weight: 400;
     letter-spacing: 0.02em;
@@ -330,11 +393,66 @@ b,
     backdrop-filter: none;
 }
 
-.workspace-tab-header.is-active,
+.workspace-tab-header.is-active {
+    background-color: var(--cli-active-background);
+    color: var(--cli-active-text);
+}
+
 .nav-file-title.is-active,
 .suggestion-item.is-selected {
     background-color: var(--cli-active-background);
     color: var(--cli-active-text);
+}
+
+/* Keep inactive tabs readable in both focused and unfocused tab stacks. */
+.workspace-tab-header:not(.is-active),
+.workspace-tab-header:not(.is-active) .workspace-tab-header-inner,
+.workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title,
+.workspace-tab-header:not(.is-active) .workspace-tab-header-inner-icon,
+.workspace-tab-header:not(.is-active) .workspace-tab-header-inner-close-button,
+.workspace-tab-header:not(.is-active) a,
+.workspace-tab-header:not(.is-active) a:visited {
+    color: var(--phosphor-text);
+    opacity: 1;
+    text-shadow: var(--crt-text-shadow);
+}
+
+.workspace-tab-header:not(.is-active):hover,
+.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-title,
+.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-icon,
+.workspace-tab-header:not(.is-active):hover .workspace-tab-header-inner-close-button {
+    color: var(--phosphor-link-hover);
+    opacity: 1;
+}
+
+/* Active tab text stays dark against the solid phosphor background. */
+.workspace-tab-header.is-active,
+.workspace-tab-header.is-active .workspace-tab-header-inner,
+.workspace-tab-header.is-active .workspace-tab-header-inner-title,
+.workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button,
+.workspace-tab-header.is-active a,
+.workspace-tab-header.is-active a:visited {
+    color: var(--cli-active-text);
+    opacity: 1;
+    text-shadow: none;
+}
+
+/* Obsidian retains .is-active when a different pane or window gains focus. */
+body:not(.is-focused) .workspace-tab-header {
+    opacity: 1;
+}
+
+body:not(.is-focused) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title,
+body:not(.is-focused) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-icon {
+    color: var(--phosphor-text);
+    opacity: 1;
+}
+
+body:not(.is-focused) .workspace-tab-header.is-active .workspace-tab-header-inner-title,
+body:not(.is-focused) .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
+    color: var(--cli-active-text);
+    opacity: 1;
 }
 
 .workspace-leaf,
@@ -416,9 +534,32 @@ body.theme-light {
     color: var(--text-normal);
 }
 
-/* Links—give them a terminal green */
-a {
+/* Document links use a brighter variation of the selected phosphor. */
+.markdown-rendered a {
     color: var(--link-color);
+}
+
+.markdown-rendered a:hover {
+    color: var(--link-color-hover);
+}
+
+.markdown-rendered a:visited {
+    color: var(--phosphor-link-visited);
+}
+
+.markdown-rendered a:visited:hover {
+    color: var(--link-color-hover);
+}
+
+/* Keep unchecked task boxes dark instead of using the generic gray fill. */
+.markdown-source-view input[type="checkbox"]:not(:checked),
+.markdown-rendered input[type="checkbox"]:not(:checked) {
+    background-color: var(--phosphor-background);
+}
+
+.markdown-source-view input[type="checkbox"]:not(:checked):hover,
+.markdown-rendered input[type="checkbox"]:not(:checked):hover {
+    box-shadow: 0 0 4px var(--crt-near-glow);
 }
 
 /* Built-in spellcheck (CodeMirror 6) */
@@ -521,12 +662,6 @@ a {
     border-top: 1px solid var(--text-normal);
     border-radius: 4px 4px 0 0;
     padding-top: 0.5em;
-    box-shadow: inset 0 0 3px var(--code-inset-shadow-color);
-}
-
-/* Middle lines just get side borders */
-.markdown-source-view.mod-cm6 div.HyperMD-codeblock-bg {
-    /* optional vertical padding if you want more breathing room */
 }
 
 /* Bottom of the block */
@@ -534,7 +669,6 @@ a {
     border-bottom: 1px solid var(--text-normal);
     border-radius: 0 0 4px 4px;
     padding-bottom: 0.5em;
-    box-shadow: inset 0 0 3px var(--code-inset-shadow-color);
 }
 /* =====================================================
  *  TABLES
@@ -691,7 +825,9 @@ a {
     }
 
     .markdown-rendered a,
-    .print .markdown-rendered a {
+    .markdown-rendered a:visited,
+    .print .markdown-rendered a,
+    .print .markdown-rendered a:visited {
         color: var(--link-color);
         text-decoration: underline;
     }
