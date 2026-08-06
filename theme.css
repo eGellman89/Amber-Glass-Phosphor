@@ -645,7 +645,6 @@ body.theme-light {
 .markdown-source-view .cm-underline {
     text-decoration-color: var(--underline-color);
 }
-.cm-editor, .markdown-rendered { font-size: 20px; }
 
 .mobile-toolbar {
     flex-wrap: wrap;
