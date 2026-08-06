@@ -332,7 +332,6 @@ b,
 
 .workspace-tab-header.is-active,
 .nav-file-title.is-active,
-.vertical-tab-nav-item.is-active,
 .suggestion-item.is-selected {
     background-color: var(--cli-active-background);
     color: var(--cli-active-text);
@@ -392,6 +391,23 @@ body.theme-light {
 .markdown-source-view {
     background-color: var(--background-primary);
     color: var(--text-normal);
+}
+
+/* Selected page in the Settings navigation */
+.modal.mod-settings .vertical-tab-nav-item.is-active {
+    background-color: var(--sidebar-active-color);
+    color: var(--phosphor-text);
+    border-left: 2px solid var(--phosphor-text);
+}
+
+.modal.mod-settings .vertical-tab-nav-item.is-active:hover {
+    background-color: var(--sidebar-button-hover-color);
+    color: var(--phosphor-text);
+}
+
+.modal.mod-settings .vertical-tab-nav-item.is-active
+.vertical-tab-nav-item-icon {
+    color: var(--phosphor-text);
 }
 
 /* Preview mode */

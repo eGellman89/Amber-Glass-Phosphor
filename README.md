@@ -19,6 +19,10 @@ Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended 
 
 - Reduced the embedded 3270 Nerd Font size by removing unused private-use icon glyphs.
 
+### Version 1.0.2
+
+- Fixed the settings menu tabs so they are now readable.
+
 ## Installation
 
 ### Manual installation
