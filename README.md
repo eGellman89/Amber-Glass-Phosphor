@@ -1,7 +1,6 @@
 # Amber Glass Phosphor
 
-Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended to bring my vision of a retro-futuristic interface to Obsidian while remaining easy on the eyes and helping with concentration. Multicolored headings make navigation quicker. This is a 1.0 release and might include updates in the future.
-
+Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended to bring my vision of a retro-futuristic interface to Obsidian while remaining easy on the eyes and helping with concentration. Multicolored headings make navigation quicker.
 ![Amber Glass Phosphor preview](screenshot.png)
 
 ## Features
@@ -13,6 +12,12 @@ Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended 
 - Optional phosphor text glow.
 - Square, terminal-inspired controls and panes.
 - Style Settings integration.
+
+## Changelog
+
+### Version 1.0.1
+
+- Reduced the embedded 3270 Nerd Font size by removing unused private-use icon glyphs.
 
 ## Installation
 
@@ -41,7 +46,7 @@ Amber remains the default when Style Settings is not installed.
 
 ## Fonts
 
-The theme embeds format-converted WOFF2 versions of:
+The theme embeds WOFF2 conversions of:
 
 - Share Tech Mono
 - 3270 Nerd Font

@@ -2,7 +2,7 @@
 
 The fonts embedded in `theme.css` are distributed under the SIL Open Font License, Version 1.1. The complete license text is included in [`OFL-1.1.txt`](OFL-1.1.txt).
 
-The WOFF2 copies were produced for this theme from the supplied TTF files. Their glyph inventories, character maps, shaping tables, and original copyright/license metadata were preserved. Theme-specific internal family aliases were applied so the converted copies do not create ambiguity around Reserved Font Names.
+The WOFF2 copies were produced for this theme from the supplied TTF files. Original copyright and license metadata was preserved. The embedded 3270 Nerd Font was subset to remove private-use icon glyphs that are not used by the theme while retaining its standard text, punctuation, symbol, and international character coverage. Theme-specific internal family aliases were applied where necessary to comply with Reserved Font Name requirements.
 
 ## Share Tech Mono
 
