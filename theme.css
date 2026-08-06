@@ -70,6 +70,7 @@ settings:
     /* === COLOR PALETTE: change these values to retheme the stylesheet === */
     --phosphor-background: #151000;               /* Main dark amber-black background */
     --phosphor-text: #FFAA00;                     /* Main glowing amber text */
+    --phosphor-rgb: 255, 170, 0;                  /* RGB channels for translucent phosphor fills */
     --phosphor-border: #806000;                   /* Dull amber outlines around windows, panels, and controls */
     --phosphor-border-hover: #B07800;             /* Brighter amber outline when a control is hovered */
     --link-color: #89FF5A;                        /* Links in the editor, preview, and PDF export */
@@ -84,9 +85,9 @@ settings:
     --heading-5-color: #FF3333;                   /* H5 headings: red */
     --heading-6-color: #FFDD00;                   /* H6 headings: yellow */
 
-    --sidebar-hover-color: rgba(255, 255, 255, 0.05);  /* File or folder under the pointer */
-    --sidebar-button-hover-color: rgba(255, 255, 255, 0.08); /* Sidebar action-button hover */
-    --sidebar-active-color: rgba(255, 255, 255, 0.10); /* Currently open file */
+    --sidebar-hover-color: rgba(var(--phosphor-rgb), 0.05);  /* File or folder under the pointer */
+    --sidebar-button-hover-color: rgba(var(--phosphor-rgb), 0.08); /* Sidebar action-button hover */
+    --sidebar-active-color: rgba(var(--phosphor-rgb), 0.10); /* Currently open file */
     --blockquote-background: rgba(255, 170, 0, 0.08); /* Amber blockquote fill */
     --blockquote-border: rgba(255, 170, 0, 0.25);     /* Amber blockquote left border */
     --table-border-color: rgba(255, 170, 0, 0.25);    /* Normal table-cell borders */
@@ -119,6 +120,7 @@ settings:
 body.phosphor-green {
     --phosphor-background: #001500;
     --phosphor-text: #00FF66;
+    --phosphor-rgb: 0, 255, 102;
     --phosphor-border: #006633;
     --phosphor-border-hover: #00A854;
     --link-color: #FFB000;
@@ -139,6 +141,7 @@ body.phosphor-green {
 body.phosphor-white {
     --phosphor-background: #101010;
     --phosphor-text: #F2F2F2;
+    --phosphor-rgb: 242, 242, 242;
     --phosphor-border: #666666;
     --phosphor-border-hover: #999999;
     --link-color: #89FF5A;
@@ -179,6 +182,20 @@ body.theme-light {
     --background-modifier-border-focus: var(--phosphor-text);
     --background-modifier-hover: var(--blockquote-background);
     --text-normal: var(--phosphor-text);
+    --text-muted: var(--phosphor-border-hover);
+    --text-accent: var(--phosphor-text);
+    --text-accent-hover: var(--phosphor-text);
+    --interactive-accent: var(--phosphor-text);
+    --interactive-accent-hover: var(--phosphor-border-hover);
+    --icon-color: var(--phosphor-text);
+    --icon-color-hover: var(--phosphor-text);
+    --icon-color-active: var(--phosphor-text);
+    --table-background: transparent;
+    --table-header-background: var(--phosphor-text);
+    --table-header-background-hover: var(--phosphor-text);
+    --table-header-color: var(--phosphor-background);
+    --table-text-color: var(--phosphor-text);
+    --table-row-background-hover: var(--table-row-hover-color);
     --radius-s: var(--cli-corner-radius);
     --radius-m: var(--cli-corner-radius);
     --radius-l: var(--cli-corner-radius);
@@ -521,12 +538,22 @@ a {
     border: 1px solid var(--table-border-color);
 }
 
-.markdown-rendered table thead th,
-.markdown-preview-view table thead th {
-    background-color: var(--text-normal);
-    color: var(--background-primary);
+.markdown-rendered table > thead > tr > th,
+.markdown-rendered table > tbody > tr > th,
+.markdown-preview-view table > thead > tr > th,
+.markdown-preview-view table > tbody > tr > th {
+    background-color: var(--phosphor-text);
+    color: var(--phosphor-background);
     border-color: var(--table-header-border-color);
     font-weight: 700;
+}
+
+.markdown-rendered table > thead > tr:hover > th,
+.markdown-rendered table > tbody > tr:hover > th,
+.markdown-preview-view table > thead > tr:hover > th,
+.markdown-preview-view table > tbody > tr:hover > th {
+    background-color: var(--phosphor-text);
+    color: var(--phosphor-background);
 }
 
 .markdown-rendered table tbody td,
@@ -555,6 +582,16 @@ a {
 .markdown-source-view.mod-cm6 .cm-content .cm-line.HyperMD-table-row:hover,
 .markdown-source-view.mod-cm6 .cm-content .cm-line.cm-table-row:hover {
     background-color: var(--table-row-even-color);
+}
+
+/* Success-family callouts use the active phosphor instead of Obsidian's
+ * default green, keeping amber, green, and white palettes self-consistent. */
+.callout[data-callout="success"],
+.callout[data-callout="check"],
+.callout[data-callout="done"] {
+    --callout-color: var(--phosphor-rgb);
+    background-color: rgba(var(--phosphor-rgb), 0.12);
+    border: 1px solid rgba(var(--phosphor-rgb), 0.45);
 }
 
 /* =====================================================
