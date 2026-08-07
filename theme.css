@@ -582,6 +582,22 @@ body.theme-light {
     color: var(--text-normal);
 }
 
+/* Dull but readable editor line numbers */
+.markdown-source-view.mod-cm6
+.cm-lineNumbers
+.cm-gutterElement {
+    color: var(--phosphor-border);
+    opacity: 1;
+    text-shadow: none;
+}
+
+/* Slightly brighten the current line number */
+.markdown-source-view.mod-cm6
+.cm-lineNumbers
+.cm-gutterElement.cm-activeLineGutter {
+    color: var(--phosphor-border-hover);
+}
+
 /* Selected page in the Settings navigation */
 .modal.mod-settings .vertical-tab-nav-item.is-active {
     background-color: var(--sidebar-active-color);
