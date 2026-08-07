@@ -30,7 +30,7 @@ Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended 
 * Corrected white-phosphor glow and selection colors.
 * Removed redundant CSS while retaining Style Settings compatibility.
 * 
-## Version 1.0.4
+### Version 1.0.4
 
 * Added palette-aware styling for buttons and status labels in the Community Themes browser.
 * Added phosphor-matched borders to workspace tabs and pane dividers.
@@ -38,8 +38,11 @@ Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended 
 * Replaced Obsidian’s curved tab decorations with clean, terminal-style rectangular tabs.
 * Improved active, inactive, and unfocused tab readability across all phosphor palettes.
 
-## Version 1.0.5
+### Version 1.0.5
 * Removed fixed font height to allow Obsidian's native slider for font size to function.
+
+### Version 1.0.6
+* Targeted the line numbers with specified phosphor colors.
 
 ## Installation
 
