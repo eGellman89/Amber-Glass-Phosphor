@@ -66,6 +66,38 @@ Available controls:
 
 Amber remains the default when Style Settings is not installed.
 
+<details>
+<summary><strong>Palette previews</strong></summary>
+
+<br>
+
+<table>
+  <tr>
+    <th>Amber</th>
+    <th>Green</th>
+    <th>White</th>
+  </tr>
+  <tr>
+    <td>
+      <a href="screenshot_amber.png">
+        <img src="screenshot_amber.png" alt="Amber phosphor palette" width="260">
+      </a>
+    </td>
+    <td>
+      <a href="screenshot_green.png">
+        <img src="screenshot_green.png" alt="Green phosphor palette" width="260">
+      </a>
+    </td>
+    <td>
+      <a href="screenshot_white.png">
+        <img src="screenshot_white.png" alt="White phosphor palette" width="260">
+      </a>
+    </td>
+  </tr>
+</table>
+
+</details>
+
 ## Fonts
 
 The theme embeds WOFF2 conversions of:
