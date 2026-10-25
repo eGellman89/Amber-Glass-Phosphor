@@ -55,6 +55,11 @@ Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended 
 - Removed redundant CSS and an unnecessary transparent table-hover shadow.
 - Fixed PDF highlight and callout readability and duplicate borders inside printed code blocks.
 
+### Version 1.0.8
+
+- Replaced Mermaid color priority overrides with scoped selector specificity and palette variables, resolving the theme review warning.
+- Preserved automatic phosphor colors while allowing explicit inline diagram styles to take precedence.
+
 ## Installation
 
 ### Manual installation
@@ -80,7 +85,7 @@ Available controls:
 
 Amber remains the default when Style Settings is not installed.
 
-Mermaid flowcharts and sequence diagrams follow the selected phosphor palette automatically in Reading view, Live Preview, and PDF export. Chart series retain their distinct colors. The legacy renderer uses scoped color overrides; diagram-authored colors may be superseded. Pele styling tokens are included for Obsidian 1.15+, but native 1.15 testing is pending.
+Mermaid flowcharts and sequence diagrams follow the selected phosphor palette automatically in Reading view, Live Preview, and PDF export. Chart series retain their distinct colors. The legacy renderer uses scoped selector specificity and palette variables; explicit inline diagram styles take precedence. Pele styling tokens are included for Obsidian 1.15+, but native 1.15 testing is pending.
 
 <details>
 <summary><strong>Palette previews</strong></summary>

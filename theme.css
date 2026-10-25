@@ -860,63 +860,66 @@ body.theme-light {
     --pele-radius: var(--cli-corner-radius);
 }
 
-/* Legacy Mermaid embeds ID-scoped styles inside each SVG. These limited
- * !important declarations override its fixed colors without escalating IDs
- * or touching diagram geometry, dash patterns, images, or math glyphs. */
-.mermaid svg:not(.pele) .node > .label-container > path[fill]:not([fill="none"]),
-.mermaid svg:not(.pele) :is(
+/* Legacy Mermaid embeds ID-scoped styles inside each SVG. The :is() branch
+ * uses #agp-mermaid as a specificity anchor; [id] matches Mermaid's generated
+ * SVG IDs, so no fixed ID or DOM changes are required. One ID plus the scoped
+ * classes outranks its defaults while explicit inline diagram styles still win.
+ * Sequence arrowhead rules contain two IDs, so markers use a second anchor. */
+.mermaid svg:not(.pele):is([id], #agp-mermaid) .node > .label-container > path[fill]:not([fill="none"]),
+.mermaid svg:not(.pele):is([id], #agp-mermaid) :is(
     .node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path,
     rect.actor, rect.note, .labelBox, .classGroup > rect,
     .statediagram-state > rect, .er.entityBox
 ) {
-    fill: var(--code-editor-background) !important;
-    stroke: var(--phosphor-text) !important;
+    fill: var(--code-editor-background);
+    stroke: var(--phosphor-text);
 }
 
-.mermaid svg:not(.pele) .cluster > rect {
-    fill: var(--phosphor-background) !important;
-    stroke: var(--phosphor-border-hover) !important;
+.mermaid svg:not(.pele):is([id], #agp-mermaid) .cluster > rect {
+    fill: var(--phosphor-background);
+    stroke: var(--phosphor-border-hover);
 }
 
-.mermaid svg:not(.pele) :is(
+.mermaid svg:not(.pele):is([id], #agp-mermaid) :is(
     text, tspan, foreignObject div, foreignObject span, foreignObject p
 ) {
-    fill: var(--phosphor-text) !important;
-    color: var(--phosphor-text) !important;
+    fill: var(--phosphor-text);
+    color: var(--phosphor-text);
 }
 
-.mermaid svg:not(.pele) :is(
+.mermaid svg:not(.pele):is([id], #agp-mermaid) :is(
     .flowchart-link, .edgePath .path, .messageLine0, .messageLine1,
     .actor-line, .relation, .transition, .divider, .divider path, .classGroup line,
     .node > .label-container > path[fill="none"], .pieOuterCircle
 ) {
-    stroke: var(--phosphor-text) !important;
+    stroke: var(--phosphor-text);
 }
 
-.mermaid svg:not(.pele) :is(marker path, marker circle, .arrowheadPath) {
-    fill: var(--phosphor-text) !important;
-    stroke: var(--phosphor-text) !important;
+.mermaid svg:not(.pele):is([id], #agp-mermaid) marker:is([id], #agp-mermaid-marker) :is(path, circle),
+.mermaid svg:not(.pele):is([id], #agp-mermaid) .arrowheadPath {
+    fill: var(--phosphor-text);
+    stroke: var(--phosphor-text);
 }
 
 /* Preserve hollow relationship markers and inverse text on pie slices. */
-.mermaid svg:not(.pele) marker:is(.aggregation, .extension, .lollipop) :is(path, circle) {
-    fill: var(--phosphor-background) !important;
+.mermaid svg:not(.pele):is([id], #agp-mermaid) marker:is([id], #agp-mermaid-marker):is(.aggregation, .extension, .lollipop) :is(path, circle) {
+    fill: var(--phosphor-background);
 }
 
-.mermaid svg:not(.pele) .node > circle.state-start {
-    fill: var(--phosphor-text) !important;
+.mermaid svg:not(.pele):is([id], #agp-mermaid) .node > circle.state-start {
+    fill: var(--phosphor-text);
 }
 
-.mermaid svg:not(.pele) text.slice {
-    fill: var(--phosphor-background) !important;
+.mermaid svg:not(.pele):is([id], #agp-mermaid) text.slice {
+    fill: var(--phosphor-background);
 }
 
-.mermaid svg:not(.pele) :is(.edgeLabel, .edgeLabel p, .labelBkg) {
-    background-color: var(--phosphor-background) !important;
+.mermaid svg:not(.pele):is([id], #agp-mermaid) :is(.edgeLabel, .edgeLabel p, .labelBkg) {
+    background-color: var(--phosphor-background);
 }
 
-.mermaid svg:not(.pele) .edgeLabel rect {
-    fill: var(--phosphor-background) !important;
+.mermaid svg:not(.pele):is([id], #agp-mermaid) .edgeLabel rect {
+    fill: var(--phosphor-background);
 }
 
 /* =====================================================
