@@ -5,11 +5,12 @@ Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended 
 
 ## Features
 
-- Amber, green, and white phosphor palettes.
+- Amber, green, blue, and white phosphor palettes.
 - Embedded offline fonts with no network requests.
 - Matching Reading view, Live Preview, interface, and PDF-export styling.
 - Optional CRT scanlines and vignette.
 - Optional phosphor text glow.
+- Palette-matched Mermaid nodes, labels, arrows, and backgrounds.
 - Square, terminal-inspired controls and panes.
 - Style Settings integration.
 
@@ -44,6 +45,16 @@ Amber Glass Phosphor is a dark, CRT-inspired theme for Obsidian. It is intended 
 ### Version 1.0.6
 * Targeted the line numbers with specified phosphor colors.
 
+### Version 1.0.7
+
+- Added a blue phosphor palette with matching interface, links, selection, code backgrounds, and glow.
+- Added palette-aware Mermaid flowchart and sequence styling, plus CSS tokens for the upcoming Pele renderer.
+- Adopted native theme font, heading, and blockquote variables while preserving font overrides and palette controls.
+- Updated tab interiors, tooltips, notices, and hotkeys to use current Obsidian styling variables.
+- Restored native modal sizing and added direction-aware settings and blockquote borders.
+- Removed redundant CSS and an unnecessary transparent table-hover shadow.
+- Fixed PDF highlight and callout readability and duplicate borders inside printed code blocks.
+
 ## Installation
 
 ### Manual installation
@@ -63,11 +74,13 @@ The optional [Style Settings](https://github.com/mgmeyers/obsidian-style-setting
 
 Available controls:
 
-- **Phosphor palette:** Amber, Green, or White.
+- **Phosphor palette:** Amber, Green, Blue, or White.
 - **Disable CRT overlay:** Removes scanlines and the edge vignette.
 - **Disable text glow:** Removes glow while retaining the selected palette.
 
 Amber remains the default when Style Settings is not installed.
+
+Mermaid flowcharts and sequence diagrams follow the selected phosphor palette automatically in Reading view, Live Preview, and PDF export. Chart series retain their distinct colors. The legacy renderer uses scoped color overrides; diagram-authored colors may be superseded. Pele styling tokens are included for Obsidian 1.15+, but native 1.15 testing is pending.
 
 <details>
 <summary><strong>Palette previews</strong></summary>
@@ -78,6 +91,7 @@ Amber remains the default when Style Settings is not installed.
   <tr>
     <th>Amber</th>
     <th>Green</th>
+    <th>Blue</th>
     <th>White</th>
   </tr>
   <tr>
@@ -89,6 +103,11 @@ Amber remains the default when Style Settings is not installed.
     <td>
       <a href="screenshot_green.png">
         <img src="screenshot_green.png" alt="Green phosphor palette" width="260">
+      </a>
+    </td>
+    <td>
+      <a href="screenshot_blue.png">
+        <img src="screenshot_blue.png" alt="Blue phosphor palette" width="260">
       </a>
     </td>
     <td>

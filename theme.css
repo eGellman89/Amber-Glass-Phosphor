@@ -47,6 +47,9 @@ settings:
                 label: Green
                 value: phosphor-green
             -
+                label: Blue
+                value: phosphor-blue
+            -
                 label: White
                 value: phosphor-white
     -
@@ -62,10 +65,11 @@ settings:
 
 */
 
-:root {
-    --font-interface: "AGP Mono", monospace;
-    --font-text: "AGP Mono", monospace;
-    --font-monospace: "AGP Terminal", monospace;
+body {
+    /* Theme defaults participate in Obsidian's Appearance font overrides. */
+    --font-interface-theme: "AGP Mono", monospace;
+    --font-text-theme: "AGP Mono", monospace;
+    --font-monospace-theme: "AGP Terminal", monospace;
 
     /* === COLOR PALETTE: change these values to retheme the stylesheet === */
     --phosphor-background: #151000;               /* Main dark amber-black background */
@@ -88,7 +92,6 @@ settings:
     --heading-6-color: #FFDD00;                   /* H6 headings: yellow */
 
     --code-inset-shadow-color: rgba(0, 0, 0, 0.30);   /* Inner shadow around Live Preview code blocks */
-    --transparent-overlay: rgba(0, 0, 0, 0);          /* Transparent table-hover overlay */
 
     /* === CLI LAYOUT SETTINGS === */
     --cli-corner-radius: 0px;                    /* 0px for square terminal corners; increase to restore rounding */
@@ -120,6 +123,20 @@ body.phosphor-green {
     --code-editor-background: #002510;
 }
 
+body.phosphor-blue {
+    --phosphor-background: #000C18;
+    --phosphor-text: #66BFFF;
+    --phosphor-rgb: 102, 191, 255;
+    --phosphor-border: #315F80;
+    --phosphor-border-hover: #459EDE;
+    --phosphor-link: #95D6FF;
+    --phosphor-link-hover: #C6EAFF;
+    --phosphor-link-visited: #65A5D1;
+    --spell-error-color: #FF6B6B;
+    --underline-color: #67B7FF;
+    --code-editor-background: #001A2C;
+}
+
 body.phosphor-white {
     --phosphor-background: #101010;
     --phosphor-text: #F2F2F2;
@@ -149,6 +166,10 @@ body.theme-light {
     --sidebar-active-color: rgba(var(--phosphor-rgb), 0.10);
     --blockquote-background: rgba(var(--phosphor-rgb), 0.08);
     --blockquote-border: rgba(var(--phosphor-rgb), 0.25);
+    --blockquote-background-color: var(--blockquote-background);
+    --blockquote-border-color: var(--blockquote-border);
+    --blockquote-border-thickness: 2px;
+    --blockquote-color: var(--phosphor-text);
     --table-border-color: rgba(var(--phosphor-rgb), 0.25);
     --table-header-border-color: rgba(var(--phosphor-rgb), 0.35);
     --table-row-odd-color: rgba(var(--phosphor-rgb), 0.06);
@@ -180,6 +201,8 @@ body.theme-light {
     --text-on-accent: var(--phosphor-background);
     --text-on-accent-inverted: var(--phosphor-background);
     --text-highlight-bg: var(--phosphor-highlight);
+    /* Both base schemes retain this theme's dark surfaces. */
+    --highlight-mix-blend-mode: lighten;
     --text-selection: var(--phosphor-selection);
     --interactive-accent: var(--phosphor-text);
     --interactive-accent-hover: var(--phosphor-border-hover);
@@ -205,15 +228,45 @@ body.theme-light {
     --radius-l: var(--cli-corner-radius);
     --input-radius: var(--cli-corner-radius);
     --button-radius: var(--cli-corner-radius);
+    --tab-radius: var(--cli-corner-radius);
     --tab-radius-active: var(--cli-corner-radius);
+    --tab-inner-background: transparent;
+    --tab-inner-background-hover: var(--phosphor-highlight);
+    --tab-inner-background-active: transparent;
     --modal-radius: var(--cli-corner-radius);
     --menu-radius: var(--cli-corner-radius);
+    --tooltip-background: var(--phosphor-background);
+    --tooltip-color: var(--phosphor-text);
+    --tooltip-radius: var(--cli-corner-radius);
+    --tooltip-shadow: none;
+    --notice-background: var(--phosphor-background);
+    --notice-color: var(--phosphor-text);
+    --notice-border: 1px solid var(--phosphor-border);
+    --notice-radius: var(--cli-corner-radius);
+    --notice-shadow: none;
+    --hotkey-background: var(--phosphor-highlight);
+    --hotkey-radius: var(--cli-corner-radius);
     --tab-background-active: var(--cli-active-background);
     --tab-text-color: var(--phosphor-text);
     --tab-text-color-active: var(--cli-active-text);
     --tab-text-color-focused: var(--phosphor-text);
     --tab-text-color-focused-active: var(--cli-active-text);
     --tab-text-color-focused-active-current: var(--cli-active-text);
+    /* Native heading variables also feed inline titles; retain their body styling. */
+    --inline-title-color: inherit;
+    --inline-title-font: inherit;
+    --h1-color: var(--heading-1-color);
+    --h1-font: "AGP Display", sans-serif;
+    --h2-color: var(--heading-2-color);
+    --h2-font: "AGP Display", sans-serif;
+    --h3-color: var(--heading-3-color);
+    --h3-font: "AGP Display", sans-serif;
+    --h4-color: var(--heading-4-color);
+    --h4-font: "AGP Display", sans-serif;
+    --h5-color: var(--heading-5-color);
+    --h5-font: "AGP Display", sans-serif;
+    --h6-color: var(--heading-6-color);
+    --h6-font: "AGP Display", sans-serif;
     --checkbox-radius: 0px;
     --checkbox-color: var(--phosphor-text);
     --checkbox-color-hover: var(--phosphor-border-hover);
@@ -255,7 +308,7 @@ body.phosphor-no-glow {
 }
 
 .vertical-tab-header {
-    border-right: 1px solid var(--phosphor-border);
+    border-inline-end: 1px solid var(--phosphor-border);
 }
 
 /* Top title/menu bar, side ribbon, tabs, sidebar headers, and status bar */
@@ -403,20 +456,6 @@ select option:checked,
 }
 
 /* =====================================================
- *  HEADINGS
- *  ===================================================== */
-
-.markdown-rendered h1,
-.markdown-rendered h2,
-.markdown-rendered h3,
-.markdown-rendered h4,
-.markdown-rendered h5,
-.markdown-rendered h6,
-.markdown-source-view.mod-cm6 .cm-header {
-    font-family: "AGP Display", sans-serif;
-}
-
-/* =====================================================
  *  BOLD TEXT
  *  ===================================================== */
 
@@ -476,7 +515,6 @@ b,
     gap: var(--cli-tab-gap);
 }
 
-.nav-file-title.is-active,
 .suggestion-item.is-selected {
     background-color: var(--cli-active-background);
     color: var(--cli-active-text);
@@ -518,18 +556,6 @@ b,
 
 /* Obsidian retains .is-active when a different pane or window gains focus. */
 body:not(.is-focused) .workspace-tab-header {
-    opacity: 1;
-}
-
-body:not(.is-focused) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-title,
-body:not(.is-focused) .workspace-tab-header:not(.is-active) .workspace-tab-header-inner-icon {
-    color: var(--phosphor-text);
-    opacity: 1;
-}
-
-body:not(.is-focused) .workspace-tab-header.is-active .workspace-tab-header-inner-title,
-body:not(.is-focused) .workspace-tab-header.is-active .workspace-tab-header-inner-icon {
-    color: var(--cli-active-text);
     opacity: 1;
 }
 
@@ -602,7 +628,7 @@ body.theme-light {
 .modal.mod-settings .vertical-tab-nav-item.is-active {
     background-color: var(--sidebar-active-color);
     color: var(--phosphor-text);
-    border-left: 2px solid var(--phosphor-text);
+    border-inline-start: 2px solid var(--phosphor-text);
 }
 
 .modal.mod-settings .vertical-tab-nav-item.is-active:hover {
@@ -667,11 +693,6 @@ body.theme-light {
     padding: 0.2rem 0.4rem;
 }
 
-.modal-container {
-    max-height: 90vh;
-    overflow-y: auto;
-}
-
 /* Sidebar background (left or right) */
 .workspace-split.mod-left-split,
 .workspace-split.mod-right-split {
@@ -713,14 +734,6 @@ body.theme-light {
     background-color: var(--sidebar-button-hover-color);
 }
 
-/* === Blockquotes (>) === */
-.markdown-preview-view.mod-cm6  blockquote,
-.markdown-source-view.mod-cm6  blockquote {
-    background-color: var(--blockquote-background);
-    border-left: 2px solid var(--blockquote-border);
-    color: var(--text-normal);
-}
-
 /* === Code blocks (```...```) === */
 /* === Reading / Preview mode: whole code block === */
 .markdown-preview-view pre {
@@ -760,57 +773,42 @@ body.theme-light {
  *  TABLES
  *  ===================================================== */
 
-.markdown-rendered table,
-.markdown-preview-view table {
+:is(.markdown-rendered, .markdown-preview-view) table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.markdown-rendered table th,
-.markdown-rendered table td,
-.markdown-preview-view table th,
-.markdown-preview-view table td {
+:is(.markdown-rendered, .markdown-preview-view) table :is(th, td) {
     padding: 0.35em 0.6em;
     border: 1px solid var(--table-border-color);
 }
 
-.markdown-rendered table > thead > tr > th,
-.markdown-rendered table > tbody > tr > th,
-.markdown-preview-view table > thead > tr > th,
-.markdown-preview-view table > tbody > tr > th {
+:is(.markdown-rendered, .markdown-preview-view) table > :is(thead, tbody) > tr > th {
     background-color: var(--phosphor-text);
     color: var(--phosphor-background);
     border-color: var(--table-header-border-color);
     font-weight: 700;
 }
 
-.markdown-rendered table > thead > tr:hover > th,
-.markdown-rendered table > tbody > tr:hover > th,
-.markdown-preview-view table > thead > tr:hover > th,
-.markdown-preview-view table > tbody > tr:hover > th {
+:is(.markdown-rendered, .markdown-preview-view) table > :is(thead, tbody) > tr:hover > th {
     background-color: var(--phosphor-text);
     color: var(--phosphor-background);
 }
 
-.markdown-rendered table tbody td,
-.markdown-preview-view table tbody td {
+:is(.markdown-rendered, .markdown-preview-view) table tbody td {
     color: var(--text-normal);
 }
 
-.markdown-rendered table tbody tr:nth-child(odd) > td,
-.markdown-preview-view table tbody tr:nth-child(odd) > td {
+:is(.markdown-rendered, .markdown-preview-view) table tbody tr:nth-child(odd) > td {
     background-color: var(--table-row-odd-color);
 }
 
-.markdown-rendered table tbody tr:nth-child(even) > td,
-.markdown-preview-view table tbody tr:nth-child(even) > td {
+:is(.markdown-rendered, .markdown-preview-view) table tbody tr:nth-child(even) > td {
     background-color: var(--table-row-even-color);
 }
 
-.markdown-rendered table tbody tr:hover > td,
-.markdown-preview-view table tbody tr:hover > td {
+:is(.markdown-rendered, .markdown-preview-view) table tbody tr:hover > td {
     background-color: var(--table-row-hover-color);
-    box-shadow: inset 0 0 0 9999px var(--transparent-overlay);
     transition: background-color 120ms ease-in-out;
 }
 
@@ -831,43 +829,94 @@ body.theme-light {
 }
 
 /* =====================================================
- *  HEADING COLORS
+ *  MERMAID DIAGRAMS
  *  ===================================================== */
 
-.markdown-rendered h1,
-.markdown-preview-view h1,
-.markdown-source-view.mod-cm6 .cm-header-1 {
-    color: var(--heading-1-color);
+/* Use the selected palette directly instead of Obsidian's legacy inversion. */
+.theme-dark .mermaid > svg,
+.theme-light .mermaid > svg {
+    filter: none;
 }
 
-.markdown-rendered h2,
-.markdown-preview-view h2,
-.markdown-source-view.mod-cm6 .cm-header-2 {
-    color: var(--heading-2-color);
+.mermaid {
+    background-color: var(--phosphor-background);
+    color: var(--phosphor-text);
+    text-shadow: var(--crt-text-shadow);
 }
 
-.markdown-rendered h3,
-.markdown-preview-view h3,
-.markdown-source-view.mod-cm6 .cm-header-3 {
-    color: var(--heading-3-color);
+/* Pele (Obsidian 1.15+) exposes theme tokens directly on its SVG root.
+ * Keep these separate from legacy Mermaid's generated element styles. */
+.mermaid svg.pele {
+    --pele-bg: var(--phosphor-background);
+    --pele-fg: var(--phosphor-text);
+    --pele-muted: var(--phosphor-link-visited);
+    --pele-line: var(--phosphor-text);
+    --pele-surface: var(--code-editor-background);
+    --pele-surface-alt: var(--phosphor-background);
+    --pele-border: var(--phosphor-border-hover);
+    --pele-accent: var(--phosphor-link);
+    --pele-font: var(--font-mermaid);
+    --pele-font-mono: var(--font-monospace);
+    --pele-radius: var(--cli-corner-radius);
 }
 
-.markdown-rendered h4,
-.markdown-preview-view h4,
-.markdown-source-view.mod-cm6 .cm-header-4 {
-    color: var(--heading-4-color);
+/* Legacy Mermaid embeds ID-scoped styles inside each SVG. These limited
+ * !important declarations override its fixed colors without escalating IDs
+ * or touching diagram geometry, dash patterns, images, or math glyphs. */
+.mermaid svg:not(.pele) .node > .label-container > path[fill]:not([fill="none"]),
+.mermaid svg:not(.pele) :is(
+    .node > rect, .node > circle, .node > ellipse, .node > polygon, .node > path,
+    rect.actor, rect.note, .labelBox, .classGroup > rect,
+    .statediagram-state > rect, .er.entityBox
+) {
+    fill: var(--code-editor-background) !important;
+    stroke: var(--phosphor-text) !important;
 }
 
-.markdown-rendered h5,
-.markdown-preview-view h5,
-.markdown-source-view.mod-cm6 .cm-header-5 {
-    color: var(--heading-5-color);
+.mermaid svg:not(.pele) .cluster > rect {
+    fill: var(--phosphor-background) !important;
+    stroke: var(--phosphor-border-hover) !important;
 }
 
-.markdown-rendered h6,
-.markdown-preview-view h6,
-.markdown-source-view.mod-cm6 .cm-header-6 {
-    color: var(--heading-6-color);
+.mermaid svg:not(.pele) :is(
+    text, tspan, foreignObject div, foreignObject span, foreignObject p
+) {
+    fill: var(--phosphor-text) !important;
+    color: var(--phosphor-text) !important;
+}
+
+.mermaid svg:not(.pele) :is(
+    .flowchart-link, .edgePath .path, .messageLine0, .messageLine1,
+    .actor-line, .relation, .transition, .divider, .divider path, .classGroup line,
+    .node > .label-container > path[fill="none"], .pieOuterCircle
+) {
+    stroke: var(--phosphor-text) !important;
+}
+
+.mermaid svg:not(.pele) :is(marker path, marker circle, .arrowheadPath) {
+    fill: var(--phosphor-text) !important;
+    stroke: var(--phosphor-text) !important;
+}
+
+/* Preserve hollow relationship markers and inverse text on pie slices. */
+.mermaid svg:not(.pele) marker:is(.aggregation, .extension, .lollipop) :is(path, circle) {
+    fill: var(--phosphor-background) !important;
+}
+
+.mermaid svg:not(.pele) .node > circle.state-start {
+    fill: var(--phosphor-text) !important;
+}
+
+.mermaid svg:not(.pele) text.slice {
+    fill: var(--phosphor-background) !important;
+}
+
+.mermaid svg:not(.pele) :is(.edgeLabel, .edgeLabel p, .labelBkg) {
+    background-color: var(--phosphor-background) !important;
+}
+
+.mermaid svg:not(.pele) .edgeLabel rect {
+    fill: var(--phosphor-background) !important;
 }
 
 /* =====================================================
@@ -884,6 +933,15 @@ body.theme-light {
         background-color: var(--background-primary);
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+    }
+
+    body {
+        /* PDF export uses a light base scheme over our dark background. */
+        --callout-blend-mode: normal;
+    }
+
+    .print .markdown-preview-view mark {
+        color: var(--text-normal);
     }
 
     img {
@@ -921,7 +979,7 @@ body.theme-light {
     .markdown-rendered blockquote,
     .print .markdown-rendered blockquote {
         background-color: var(--blockquote-background);
-        border-left: 2px solid var(--blockquote-border);
+        border-inline-start: 2px solid var(--blockquote-border);
     }
 
     .markdown-rendered pre,
@@ -932,6 +990,14 @@ body.theme-light {
         color: var(--text-normal);
         border: 1px solid var(--text-normal);
         border-radius: 4px;
+    }
+
+    /* The surrounding pre supplies the code-block border. */
+    .markdown-rendered pre code,
+    .print .markdown-rendered pre code {
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
     }
 
     .markdown-rendered h1,
